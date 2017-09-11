@@ -8,39 +8,42 @@ import { RandomuserService } from './randomuser.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
+  private users: User[] = [];
+  private lastUser: User;
   constructor(
     private randomuserService: RandomuserService) { }
 
   public async loadUser() {
-    ///const users: User[] = [];
-  /*   let lastUser: User = null; */
-  const users: User[] = [];
+
+
   let user: User;
-    let seed: string;
-/*     lastUser = await this.randomuserService.get(null);
-    console.log(lastUser); */
+
+  let seed: string;
 
 
     try {
       while (true){
-        const person = await this.randomuserService.get(seed = null);
+        const person = await this.randomuserService.get(seed );
         seed = person.email;
-        if (person.dob.getFullYear() < 1975 )
+        if (person.dob.getFullYear() > 1975 )
        {
-         user = person;
-         break;
+        user = person;
+
        }
-       users.push(person);
-
-
-    } }
-    catch (error) {console.log(error);
-
+        // tslint:disable-next-line:one-line
+        else
+       {
+          this.lastUser = person;
+          break;
+       }
+       this.users.push(person);
     }
 
+   }
+   catch (error) {console.log(error);}
 
 
-  console.log(users);
+
+  console.log(this.users, this.lastUser);
 }
 }
