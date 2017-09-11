@@ -21,10 +21,10 @@ public async get(seed: string): Promise<User> {
 
   return {
     name: response.results[0].name.first,
-    email: '1',
-    phone: '1',
-    picture: '1',
-    dop: new Date(),
+    email: response.results[0].email,
+    phone: response.results[0].phone,
+    picture: response.results[0].picture.medium,
+    dob: new Date(response.results[0].dob)
   };
 }
 }
