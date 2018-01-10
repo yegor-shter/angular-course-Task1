@@ -1,6 +1,13 @@
-# Homewrorktry
+# Task1
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.1.
+
+## Description
+
+This project was made due to conditions:
+  - Getting data from https://randomuser.me until user birthday year < 1975
+  - First request sends without seed param, nex request will get seed param = user.email
+  - Display all user names we got and name, email, phone, avatar of the last user
 
 ## Development server
 
